@@ -1,0 +1,9 @@
+/*
+!/src/
+!/src/*
+!/project/
+!/project/*
+/project/**/target/*
+!/build.sbt
+!/*.md
+!/LICENSE
