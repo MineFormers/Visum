@@ -7,9 +7,10 @@ import de.mineformers.visum.bean.value.ObservableValue
  *
  * @author PaleoCrafter
  */
-trait Property[@specialized A] extends ObservableValue[A]
-{
+trait Property[@specialized A] extends ObservableValue[A] {
   def bean: AnyRef
 
   def name: String
+
+  override final def toString: String = s"Property($name, $value)"
 }

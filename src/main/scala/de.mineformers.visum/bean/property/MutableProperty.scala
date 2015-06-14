@@ -9,9 +9,21 @@ import de.mineformers.visum.bean.value.{ObservableValue, MutableObservableValue}
  */
 trait MutableProperty[@specialized A] extends Property[A] with MutableObservableValue[A]
 {
+  protected var valid = false
+
+  def invalidate(): Unit = {
+    if(valid) {
+      valid = false
+      invalidated()
+      fireChangeEvent()
+    }
+  }
+
+  def invalidated(): Unit = ()
+
   def bind(value: ObservableValue[A]): Unit
 
-  def unbind(value: ObservableValue[A]): Unit
+  def unbind(): Unit
 
   def bound: Boolean
 
@@ -20,8 +32,6 @@ trait MutableProperty[@specialized A] extends Property[A] with MutableObservable
   def unbindBidirectional(property: MutableProperty[A]): Unit
 
   def <==(value: ObservableValue[A]) = bind(value)
-
-  def <=!(value: ObservableValue[A]) = unbind(value)
 
   def <===>(property: MutableProperty[A]) = bindBidirectional(property)
 

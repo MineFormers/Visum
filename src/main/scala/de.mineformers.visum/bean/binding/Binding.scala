@@ -26,7 +26,6 @@ trait Binding[@specialized A] extends ObservableValue[A] {
   def invalidate(): Unit = {
     if(valid) {
       _valid = false
-      fireInvalidationEvent()
       fireChangeEvent()
     }
   }

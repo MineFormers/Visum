@@ -1,4 +1,5 @@
 /*
+!/.gitignore
 !/src/
 !/src/*
 !/project/
@@ -7,3 +8,6 @@
 !/build.sbt
 !/*.md
 !/LICENSE
+!/macros/
+!/macros/*
+/macros/**/target/*
